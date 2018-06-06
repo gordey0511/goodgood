@@ -43,6 +43,7 @@ def basket_adding(request):
 
 
 def checkout(request):
+
     session_key = request.session.session_key
     products_in_basket = ProductInBasket.objects.filter(session_key=session_key, is_active=True, order__isnull=True)
     print(products_in_basket)
@@ -57,6 +58,10 @@ def checkout(request):
             print("yes")
             data = request.POST
             name = data.get("name", "3423453")
+            is_delete = data.get("is_delete")
+
+            if is_delete == 'true':
+                ProductInBasket.objects.filter(id=product_id).update(is_active=False)
             phone = data["phone"]
             user, created = User.objects.get_or_create(username=phone, defaults={"first_name": name})
 

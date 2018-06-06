@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'landing',
     'products',
     'orders',
+    'message',
 ]
 
 
@@ -138,8 +139,8 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "static", "media")
 
-#uncomment
-try:
-    from .settings_prod import *
-except:
-    pass
+# #uncomment
+# try:
+#     from .settings_prod import *
+# except:
+#     pass
