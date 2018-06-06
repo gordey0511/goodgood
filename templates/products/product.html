@@ -7,8 +7,15 @@
         <div class="row">
             <div class="col-lg-6">
                 {% for image_item in product.productimage_set.all %}
-                    <div class="product-image-item">
-                        <img src="{{ image_item.image.url }}" class="img-responsive">
+                    <div class="box">
+                        <div class="box-inner">
+                            <a href="#">
+                                <img height="400" src="{{ image_item.image.url }}" class="img-fluid" width="500">
+                            </a>
+                            <div class="text">
+                                <h2>{{ product.name }}</h2>
+                            </div>
+                        </div>
                     </div>
                 {% endfor %}
             </div>
@@ -18,7 +25,7 @@
                 </h1>
                 <div class="">
                     <p>
-                        Цена: {{ product.price }}
+                        Price: {{ product.price }}
                     </p>
                 </div>
                 <div>
@@ -34,8 +41,16 @@
                                 Доставка
                             </a>
                         </li>
-                        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-                        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+                        <li role="presentation">
+                            <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">
+                                Адрес
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">
+                                Помощь
+                            </a>
+                        </li>
                       </ul>
 
                       <!-- Tab panes -->
@@ -44,10 +59,15 @@
                             {{ product.description }}
                         </div>
                         <div role="tabpanel" class="tab-pane" id="delivery">
-                            <h3>Как мы делаем доставку</h3>
+                            <h3>Как мы делаем доставку. Когда вы закажете товар вы будете должны написать телефон<br>
+                                по этому телефону мы с вами свяжемся и спросим у вас куда нам доставить ваш заказ</h3>
                         </div>
-                        <div role="tabpanel" class="tab-pane" id="messages">...</div>
-                        <div role="tabpanel" class="tab-pane" id="settings">...</div>
+                        <div role="tabpanel" class="tab-pane" id="messages">
+                            <h2>Наше магазины находятся по адресу ...</h2>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="settings">
+                            Помочь или сообщить об ошибки вы можете написав мне в вконтакте на id271711683
+                        </div>
                       </div>
                 </div>
                 <div>
@@ -58,7 +78,7 @@
 
 
                             <div class="form-group">
-                                <button type="submit" id="submit_btn" class="btn btn-success btn-buy"
+                                <button type="submit" id="submit_btn" class="action-btn btn-success btn-buy btn btnp"
                                     data-product_id = "{{ product.id }}"
                                     data-name ="{{ product.name }}"
                                     data-price ="{{ product.price }}"
